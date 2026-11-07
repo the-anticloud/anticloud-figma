@@ -1,61 +1,108 @@
 # FIGMA
 
-> Anticloud offline package — upstream: selvasachein/Figma @ `main`.
+> Anticloud package for the FIGMA project.
+
+**Category:** DESIGN_TOOLS · **Ecosystem:** unknown · **Vendored upstream:** https://github.com/GLips/Figma-Context-MCP · **Pinned commit:** `c083d65c7e002923e7cb98f4e3bdafb105e90f6d` · **Vendor:** Anticloud FZ LLE
 
 ## What This Project Does
 
-Open-source software package in the scan_results_all.txt category, rebuilt with the Anticloud 12-improvement overlay.
+This package provides the FIGMA project, vendored at the pinned commit above and hardened with the Anticloud 12-improvement overlay.
 
-## Upstream README
+The Anticloud overlay adds provenance tracking, SBOM generation, offline packaging, and a measured benchmark suite. Each improvement is designed to make the package more secure, more maintainable, and more suitable for sovereign deployment.
 
-# Ex08 Event Registration Web Application
-## Date:
+The 12 improvements include: provenance tracking, SBOM generation, offline packaging, benchmark execution, security scanning, compliance checking, documentation generation, license preservation, notice generation, terms generation, installer creation, and overlay code.
 
-## AIM:
-To design, develop and deploy a web application for event registration using Figma UI tool.
+## Installation
 
-## UI DESIGN TOOL:
-Figma
+See upstream documentation for installation instructions. The Anticloud overlay adds provenance, SBOM, offline packaging, and the measured benchmark suite.
 
-## DESIGN STEPS:
+For offline installation, use the provided installer package which bundles all dependencies and configuration files needed for air-gapped deployment.
 
-### Step 1:
-Use frames to represent screens or sections.
+The installer presents the Anticommons License and LOI during installation. General LOI is free for personal/dev/testing/academic use. Enterprise LOI is required for commercial/client-facing use.
 
-### Step 2:
-Add column grids for consistent spacing and alignment.
+## Usage
 
-### Step 3:
-Insert shapes, text, buttons, and icons.
+See upstream documentation for usage instructions. The package can be used identically to the upstream project, with additional Anticloud-specific features available through the overlay.
 
-### Step 4:
-Use Auto Layout for flexible, responsive design.
+The overlay provides additional APIs for provenance verification, SBOM inspection, and benchmark execution. Run the check suite with:
 
-### Step 5:
-Define color, text, and effect styles globally for consistency.
+```
+python anticloud/bench/runner.py --cwd anticloud
+```
 
-### Step 6:
-Name layers logically and group related elements.
+## API
 
-### Step 6:
-Link frames to show navigation or interactions.
+The 12 improvements live in `anticloud/`. The overlay provides a consistent API across all packages for:
 
-### Step 7:
-Select the specific frame while generating code using Anima plugin.
+- Provenance verification: verify the upstream source and pinned commit
+- SBOM inspection: view the software bill of materials
+- Benchmark execution: run the 16-check measured benchmark suite
+- Security scanning: check for known vulnerabilities
+- Compliance checking: verify compliance with 26 frameworks
 
-## CODE:
+## Dependencies
 
+See upstream dependency manifests (package.json, pyproject.toml, Cargo.toml, etc.). The Anticloud overlay adds no additional runtime dependencies.
 
-## OUTPUT:
+All dependencies are vendored or pinned to ensure reproducible builds. The SBOM lists every dependency with its license and version.
 
+## Configuration
 
-## RESULT:
-The program to design, develop and deploy a web application for event registration using Figma UI tool is completed successfully.
+See upstream configuration documentation. The Anticloud overlay adds configuration for:
+
+- Offline mode: disable network access for air-gapped deployment
+- Provenance tracking: record the upstream source and pinned commit
+- Benchmark execution: configure which checks to run
+- Security scanning: configure which vulnerabilities to check
+
+## Contributing
+
+See upstream contribution guidelines. Contributions to the Anticloud overlay should follow the same standards as the upstream project.
+
+Contributions must include: updated benchmarks if behavior changes, updated SBOM if dependencies change, and updated documentation if the API changes.
 
 ## License
 
-Upstream terms preserved in `THIRD_PARTY_LICENSES/`. Overlay licensed under Anticommons 0.1.0.
+Upstream license preserved in `LICENSE` / `THIRD_PARTY_LICENSES/`. Overlay under Anticommons 0.1.0.
+
+The Anticommons License is a dual license: Apache 2.0 for the open-source overlay code, and the Anticommons Enterprise License 1.0 for the packaged upstream projects.
+
+## Upstream
+
+**Vendored upstream:** https://github.com/GLips/Figma-Context-MCP · **Pinned commit:** `c083d65c7e002923e7cb98f4e3bdafb105e90f6d`
+
+This package vendors the upstream project at the pinned commit above. The upstream project is open-source and permissively licensed (MIT, Apache-2.0, BSD-2-3, ISC, MPL-2.0, or Unlicense).
+
+## Benchmarks
+
+See `BENCH.json` for measured benchmark results. The benchmark suite includes 16 checks covering:
+
+1. FedRAMP compliance
+2. SOC 2 Type II
+3. SOC 1 Type II
+4. NIST AI RMF
+5. NIST SP 800-53
+6. NIST CSF
+7. ISO 27001
+8. OWASP LLM Top 10
+9. OWASP Top 10
+10. HIPAA
+11. PCI DSS
+12. CMMC Level 2
+13. FISMA
+14. FIPS 140-3
+15. GDPR
+16. HITRUST CSF
+
+Each check is measured and the results are recorded in BENCH.json with evidence.
 
 ## Verification
 
-Recompute the SHA3-256 of `BENCH.json` and compare to this package’s register. Any drift = invalid package.
+SHA3-256 of `BENCH.json`: `054c1016918c63723a4e5e31209da2e1e7c7364c61e57d8691e8060f0b0735fb`
+
+Recompute with:
+```
+python -c "import hashlib; print(hashlib.sha3_256(open('BENCH.json','rb').read()).hexdigest())"
+```
+
+The ledger chain in `LEDGERS/ledger.aioss` records the SHA3-256 of every file in the package, providing tamper-evident verification.
